@@ -45,14 +45,14 @@ class App extends Component {
       })
   }
 
-  tampildata(id){
-
+  hapusData(id){
     realm.write(()=>{
       //const id = 'PratamaaMBjcMXfe'
       realm.delete(realm.objects('Komik').filtered('title= $0',id))
     })
+  }
 
-    return
+  tampilAllData(){
     const a = realm.objects('Komik')
     a.map((x)=>{
       return(
@@ -75,7 +75,7 @@ class App extends Component {
     let dataKomik = _.map(favs.slice(0, 50), (f, i) => {
       return (
         <View key={i}>
-        <TouchableHighlight onPress={()=>this.tampildata(f.title)}>
+        <TouchableHighlight onPress={()=>this.hapusData(f.title)}>
           <Text>
           {f.title}
           </Text>
@@ -86,7 +86,7 @@ class App extends Component {
     let nums = realm.objects('Komik').length;
     return(
       <View style={styles.container}>
-      <TouchableHighlight onPress={()=>this.tampildata()}>
+      <TouchableHighlight onPress={()=>this.tampilAllData()}>
         <Text style={{marginTop:30}}>
           hallo
         </Text>
