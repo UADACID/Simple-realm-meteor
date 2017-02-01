@@ -45,6 +45,13 @@ class App extends Component {
       })
   }
 
+  hapusAllData(){
+    realm.write(()=>{
+      //const id = 'PratamaaMBjcMXfe'
+      realm.delete(realm.objects('Komik'))
+    })
+  }
+
   hapusData(id){
     realm.write(()=>{
       //const id = 'PratamaaMBjcMXfe'
@@ -86,9 +93,9 @@ class App extends Component {
     let nums = realm.objects('Komik').length;
     return(
       <View style={styles.container}>
-      <TouchableHighlight onPress={()=>this.tampilAllData()}>
+      <TouchableHighlight onPress={()=>this.hapusAllData()}>
         <Text style={{marginTop:30}}>
-          hallo
+          Hapus Semua Data
         </Text>
       </TouchableHighlight>
 
